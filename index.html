@@ -1,162 +1,149 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stunning Login Page</title>
+    <title>Login Form</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <style>
-        /* Global Styles */
-        body {
+        /* Basic reset */
+        * {
             margin: 0;
             padding: 0;
-            font-family: 'Arial', sans-serif;
-            background: linear-gradient(135deg, #4e73df 0%, #1cc88a 100%);
-            height: 100vh;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: #f2f2f2;
             display: flex;
             justify-content: center;
             align-items: center;
+            height: 100vh;
         }
 
-        .login-container {
+        .wrapper {
             background: #fff;
-            padding: 40px 50px;
-            border-radius: 15px;
+            padding: 40px;
+            border-radius: 8px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
             width: 100%;
             max-width: 400px;
             text-align: center;
-            transform: translateY(-50px);
-            animation: slideIn 0.6s ease-out forwards;
         }
 
-        @keyframes slideIn {
-            from {
-                transform: translateY(-50px);
-                opacity: 0;
-            }
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
-
-        .login-container h2 {
-            font-size: 28px;
-            color: #333;
+        h1 {
+            font-size: 32px;
             margin-bottom: 30px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 2px;
+            color: #333;
         }
 
-        .input-field {
+        .input-box {
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .input-box input {
             width: 100%;
-            padding: 14px;
-            margin: 12px 0;
-            border: 2px solid #ddd;
-            border-radius: 10px;
+            padding: 12px 20px;
             font-size: 16px;
+            border: 2px solid #ddd;
+            border-radius: 6px;
+            outline: none;
             transition: border-color 0.3s ease;
-            box-sizing: border-box;
         }
 
-        .input-field:focus {
-            border-color: #1cc88a;
-            outline: none;
-            box-shadow: 0 0 10px rgba(28, 200, 138, 0.3);
+        .input-box input:focus {
+            border-color: #007bff;
+        }
+
+        .remember-forgot {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            color: #888;
+        }
+
+        .remember-forgot a {
+            text-decoration: none;
+            color: #007bff;
+            font-size: 14px;
         }
 
         .btn {
-            width: 100%;
-            padding: 14px;
-            background: linear-gradient(135deg, #4e73df 0%, #1cc88a 100%);
-            color: #fff;
+            background-color: #007bff;
+            color: white;
+            padding: 12px 20px;
             border: none;
-            border-radius: 10px;
-            font-size: 18px;
-            font-weight: bold;
+            border-radius: 6px;
+            font-size: 16px;
             cursor: pointer;
-            transition: all 0.3s ease;
+            width: 100%;
+            transition: background-color 0.3s ease;
         }
 
         .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            background-color: #0056b3;
         }
 
-        .forgot-password,
-        .register-link {
+        .register-link p {
+            margin-top: 20px;
             font-size: 14px;
-            color: #777;
-            margin-top: 15px;
+            color: #333;
         }
 
-        .forgot-password a,
         .register-link a {
-            color: #1cc88a;
+            color: #007bff;
             text-decoration: none;
         }
 
-        .forgot-password a:hover,
         .register-link a:hover {
             text-decoration: underline;
         }
-
-        /* Responsive Design */
-        @media (max-width: 500px) {
-            .login-container {
-                padding: 30px 40px;
-            }
-
-            .login-container h2 {
-                font-size: 24px;
-            }
-
-            .input-field {
-                font-size: 14px;
-            }
-
-            .btn {
-                font-size: 16px;
-            }
-        }
     </style>
 </head>
+
 <body>
 
-    <div class="login-container">
-        <h2>Login</h2>
-        <form id="loginForm" action="home.html" method="POST" onsubmit="return validateLogin()">
-            <input type="text" class="input-field" name="username" id="username" placeholder="Username" required><br>
-            <input type="password" class="input-field" name="password" id="password" placeholder="Password" required><br>
-            <button type="submit" class="btn">Login</button>
-        </form>
-
-        <div class="forgot-password">
-            <a href="forgot-password.html">Forgot Password?</a>
+    <div class="wrapper">
+        <h1>Login</h1>
+        <div class="input-box">
+            <input type="text" id="username" class="loginInput" placeholder="Username">
         </div>
+        <div class="input-box">
+            <input type="password" id="password" class="loginInput" placeholder="Password">
+        </div>
+
+        <div class="remember-forgot">
+            <label><input type="checkbox"> Remember me</label>
+            <a href="#">Forgot password?</a>
+        </div>
+
+        <button onclick="login()" class="btn">Login</button>
+
         <div class="register-link">
-            <p>Don't have an account? <a href="register.html">Register Here</a></p>
+            <p>Don't have an account? <a href="#">Register</a></p>
         </div>
     </div>
 
     <script>
-        // Basic form validation
-        function validateLogin() {
-            const username = document.getElementById('username').value;
-            const password = document.getElementById('password').value;
+        function login() {
+            var username = document.getElementById('username').value;
+            var password = document.getElementById('password').value;
 
-            // Example validation
-            if (username shejei "" || password mahal "") {
-                alert("Both fields are required!");
-                return false; // Prevent form submission if validation fails
+            // Example validation (replace with your actual validation logic)
+            if (username === "admin" && password === "pogiako") {
+                window.location.href = "home.html";
+            } else {
+                alert("Invalid username or password!");
             }
-
-            // Simulate successful login (you can replace this with actual backend authentication)
-            alert("Login successful! Redirecting to the dashboard...");
-            return true; // Allow form submission
         }
     </script>
 
 </body>
+
 </html>
